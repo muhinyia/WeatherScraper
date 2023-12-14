@@ -1,25 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Parse (extractWeatherInfo) where
-
+import Types
 import Data.Aeson
 import Data.Aeson.Types (Parser, withObject, (.!=), (.:), (.:?), parseMaybe, parseEither)
 
-
-data WeatherData = WeatherData
-    { dt_txt :: String
-    , main :: TemperatureData
-    } deriving (Show)
-
-data TemperatureData = TemperatureData
-    { temp :: Float
-    } deriving (Show)
-
-data Location = Location
-    { cityName :: String
-    , latitude :: Float
-    , longitude :: Float
-    } deriving (Show)
 
 instance FromJSON WeatherData where
     parseJSON = withObject "WeatherData" $ \v -> do

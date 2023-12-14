@@ -20,6 +20,11 @@
 resolver:
   url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/21/22.yaml
 
+
+ghc-options:
+  "$locals": -Wno-all
+
+
 # User packages to be built.
 # Various formats can be used as shown in the example below.
 #

@@ -1,4 +1,4 @@
-module Main where
+module Main (main) where
 
 import Fetch (fetchWeatherData)
 import Parse (extractWeatherInfo)
@@ -12,5 +12,5 @@ main = do
             case extractWeatherInfo jsonData of
                 Left err -> putStrLn $ "Error extracting daily temperatures: " ++ err
                 Right dailyTemperatures -> do
-                    putStrLn "Daily Temperature Information:"
+                    putStrLn "Helllooo Daily Temperature Information:"
                     mapM_ print dailyTemperatures

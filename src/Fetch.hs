@@ -1,7 +1,7 @@
 module Fetch (fetchWeatherData) where
 
 import Network.HTTP.Simple
-import qualified Data.ByteString.Char8 as BS
+-- import qualified Data.ByteString.Char8 as BS
 import qualified Data.Aeson as Aeson
 
 fetchWeatherData :: IO (Either String Aeson.Value)

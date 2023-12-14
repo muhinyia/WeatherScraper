@@ -1,10 +1,17 @@
-module Types where
+module Types(WeatherData(..), TemperatureData(..), Location(..)) where
 
-import Data.Aeson
 
-data Weather = Weather {
-    -- Define your fields here
-} deriving Show
+data WeatherData = WeatherData
+    { dt_txt :: String
+    , main :: TemperatureData
+    } deriving (Show)
 
-instance FromJSON Weather where
-    parseJSON = undefined -- Implement your JSON parsing logic here
+data TemperatureData = TemperatureData
+    { temp :: Float
+    } deriving (Show)
+
+data Location = Location
+    { cityName :: String
+    , latitude :: Float
+    , longitude :: Float
+    } deriving (Show)
