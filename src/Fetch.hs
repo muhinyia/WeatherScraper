@@ -1,12 +1,15 @@
-module Fetch (fetchWeatherData) where
+module Fetch (fetchWeatherData, constructApiUrl) where
 
 import Network.HTTP.Simple
 import qualified Data.Aeson as Aeson
 
-fetchWeatherData :: IO (Either String Aeson.Value)
-fetchWeatherData = do
-    let apiKey = "01c141fb7b86fc6539474bd27e5a01dd"
-        apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=" ++ apiKey
+constructApiUrl :: String -> String -> String
+constructApiUrl latitude longitude =
+  "https://api.openweathermap.org/data/2.5/forecast?lat=" ++ latitude ++ "&lon=" ++ longitude ++ "&appid=01c141fb7b86fc6539474bd27e5a01dd"
+
+fetchWeatherData :: String -> String -> IO (Either String Aeson.Value)
+fetchWeatherData latitude longitude = do
+    let apiUrl = constructApiUrl latitude longitude
     request <- parseRequest apiUrl
     response <- httpLBS request
     let weatherDataBytes = getResponseBody response

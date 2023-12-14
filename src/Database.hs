@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Database (initializeDatabase, insertWeatherData, getAllWeatherData, viewDatabase, deleteDatabase) where
+module Database (initializeDatabase, insertWeatherData, getAllWeatherData, filterDataByCity, viewDatabase, deleteDatabase) where
 import Parse
 import Control.Monad (forM_)
 import Data.Text (Text)
@@ -68,3 +68,13 @@ getAllWeatherData = do
   rows <- query_ conn "SELECT t.date, t.temperature, l.city, l.latitude, l.longitude FROM temperature t JOIN location l ON t.id = l.id"
   close conn
   return rows
+
+
+
+  -- Filter weather data by city
+filterDataByCity:: Text -> IO [(Text, Double, Text, Double, Double)]
+filterDataByCity userCity = do
+    conn <- open "weather.db"
+    rows <- query conn "SELECT t.date, t.temperature, l.city, l.latitude, l.longitude FROM temperature t JOIN location l ON t.id = l.id WHERE l.city = ?" (Only userCity)
+    close conn
+    return rows
