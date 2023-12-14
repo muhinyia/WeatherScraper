@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Parse (extractWeatherInfo) where
+module Parse (extractWeatherInfo, WeatherInfo(..)) where
 import Types
 import Data.Aeson
 import Data.Aeson.Types (Parser, withObject, (.!=), (.:), (.:?), parseMaybe, parseEither)
