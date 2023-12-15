@@ -1,4 +1,4 @@
-# Haskell Group Project: Weather Data App
+# Weather Data App
 
 ## Overview
 
