@@ -43,7 +43,7 @@ import Data.Text (pack)
 --
 main :: IO ()
 main = do
-    putStrLn "\n=====================    WELCOME TO THE WEATHER DATA APP   ==============\nPlease Choose an Option to continue:\n"
+    putStrLn "\n=====================    WELCOME TO THE TEMPERATURE DATA APP   ==============\nPlease Choose an Option to continue:\n"
     putStrLn "1. Initialize Database"
     putStrLn "2. View Database Status"
     putStrLn "3. Fetch Data From API"
