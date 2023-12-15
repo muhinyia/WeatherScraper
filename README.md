@@ -60,5 +60,6 @@ To clear stack, run:
 
 ```bash
 stack clean
+```
 
 Feel free to contribute and provide feedback!
